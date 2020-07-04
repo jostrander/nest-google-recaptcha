@@ -1,6 +1,6 @@
 {
-  "name": "@nestlab/google-recaptcha",
-  "version": "0.0.4",
+  "name": "nest-google-recaptcha",
+  "version": "0.1.0",
   "description": "Google recaptcha module for NestJs.",
   "keywords": [
     "nestjs",
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/nestlab/google-recaptcha.git"
+    "url": "git+https://github.com/jostrander/nest-google-recaptcha.git"
   },
-  "author": "Alexey Chvarkov",
+  "author": "Jesse Ostrander",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/nestlab/google-recaptcha/issues"
+    "url": "https://github.com/jostrander/nest-google-recaptcha/issues"
   },
-  "homepage": "https://gitlab.com/nestlab/google-recaptcha#readme",
+  "homepage": "https://github.com/jostrander/nest-google-recaptcha",
   "peerDependencies": {
     "@nestjs/common": "^6.0.0",
     "@nestjs/core": "^6.0.0"
