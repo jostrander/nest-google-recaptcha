@@ -1,12 +1,15 @@
-import { HttpService, InternalServerErrorException } from '@nestjs/common';
+import { HttpService, InternalServerErrorException, Injectable, Inject } from '@nestjs/common';
 import { GoogleRecaptchaValidatorOptions } from '../interfaces/google-recaptcha-validator-options';
 
+@Injectable()
 export class GoogleRecaptchaValidator {
     private readonly apiUrl = 'https://www.google.com/recaptcha/api/siteverify';
     private readonly headers = {'Content-Type': 'application/x-www-form-urlencoded'};
 
-    constructor(private readonly http: HttpService,
-                private readonly options: GoogleRecaptchaValidatorOptions) {
+    constructor(
+        private readonly http: HttpService,
+        @Inject('GoogleRecaptchaModuleOptions') 
+        private readonly options: GoogleRecaptchaValidatorOptions) {
     }
 
     validate(response: string): Promise<boolean> {

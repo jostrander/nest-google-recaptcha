@@ -1,10 +1,13 @@
-import { CanActivate, ExecutionContext } from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable, Inject } from '@nestjs/common';
 import { GoogleRecaptchaValidator } from '../services/google-recaptcha.validator';
 import { GoogleRecaptchaGuardOptions } from '../interfaces/google-recaptcha-guard-options';
 
+@Injectable()
 export class GoogleRecaptchaGuard implements CanActivate {
-    constructor(private readonly validator: GoogleRecaptchaValidator,
-                private readonly options: GoogleRecaptchaGuardOptions) {
+    constructor(
+        private readonly validator: GoogleRecaptchaValidator,
+        @Inject('GoogleRecaptchaModuleOptions')
+        private readonly options: GoogleRecaptchaGuardOptions) {
     }
 
     async canActivate(context: ExecutionContext): Promise<boolean> {

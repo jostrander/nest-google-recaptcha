@@ -30,9 +30,21 @@ describe('Google recaptcha module', () => {
         expect(guard).toBeInstanceOf(GoogleRecaptchaValidator);
     });
 
+    test('Test validator provider options', () => {
+        const guard = app.get(GoogleRecaptchaValidator);
+
+        expect(guard['options']).toBeDefined()
+    });
+
     test('Test guard provider', () => {
         const guard = app.get(GoogleRecaptchaGuard);
 
         expect(guard).toBeInstanceOf(GoogleRecaptchaGuard);
+    });
+
+    test('Test guard provider options', () => {
+        const guard = app.get(GoogleRecaptchaGuard);
+
+        expect(guard['options']).toBeDefined()
     });
 });
