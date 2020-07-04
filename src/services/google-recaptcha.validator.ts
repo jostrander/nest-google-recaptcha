@@ -16,7 +16,7 @@ export class GoogleRecaptchaValidator {
     validate(response: string): Promise<boolean> {
         return this.http.post(this.apiUrl, qs.stringify({secret: this.options.secretKey, response}), {headers: this.headers})
             .toPromise()
-            .then(res => res.data.data.success)
+            .then(res => res.data.success)
             .catch(e => {
                 if (this.options.onError) {
                     return this.options.onError(e);
