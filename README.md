@@ -2,7 +2,7 @@
 
 ### Install
 ```
-$ npm i @nestlab/google-recaptcha
+$ npm i nest-google-recaptcha
 ```
 
 ### Configuration
