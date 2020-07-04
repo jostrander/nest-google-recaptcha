@@ -56,5 +56,8 @@
     },
     "coverageDirectory": "./coverage",
     "testEnvironment": "node"
+  },
+  "dependencies": {
+    "querystring": "^0.2.0"
   }
 }
