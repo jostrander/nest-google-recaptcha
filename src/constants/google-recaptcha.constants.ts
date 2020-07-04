@@ -1,0 +1,1 @@
+export const GOOGLE_RECAPTCHA_MODULE_OPTIONS = 'GoogleRecaptchaModuleOptions'

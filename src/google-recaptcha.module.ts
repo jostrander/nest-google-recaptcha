@@ -7,16 +7,17 @@ import { GoogleRecaptchaModuleOptions } from './interfaces/google-recaptcha-modu
 })
 export class GoogleRecaptchaModule {
     static forRoot(options: GoogleRecaptchaModuleOptions): DynamicModule {
+        const GoogleRecaptchaModuleOptionsProvider = {
+            provide: 'GoogleRecaptchaModuleOptions',
+            useValue: options
+        }
         return {
             module: GoogleRecaptchaModule,
             imports: [
                 HttpModule,
             ],
-            providers: [GoogleRecaptchaGuard, GoogleRecaptchaValidator, {
-                provide: 'GoogleRecaptchaModuleOptions',
-                useValue: options
-            }],
-            exports: [GoogleRecaptchaGuard, GoogleRecaptchaValidator],
+            providers: [GoogleRecaptchaGuard, GoogleRecaptchaValidator, GoogleRecaptchaModuleOptionsProvider],
+            exports: [GoogleRecaptchaGuard, GoogleRecaptchaValidator, GoogleRecaptchaModuleOptionsProvider],
         }
     }
 }
