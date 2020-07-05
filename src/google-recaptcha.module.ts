@@ -2,7 +2,7 @@ import { DynamicModule, HttpModule, HttpService, Module, Provider } from '@nestj
 import { GoogleRecaptchaGuard } from './guards/google-recaptcha.guard';
 import { GoogleRecaptchaValidator } from './services/google-recaptcha.validator';
 import { GoogleRecaptchaModuleOptions } from './interfaces/google-recaptcha-module-options';
-import { GoogleRecaptchaAsyncModuleOptions } from 'interfaces/google-recaptcha-async-module-options';
+import { GoogleRecaptchaAsyncModuleOptions } from './interfaces/google-recaptcha-async-module-options';
 
 @Module({
 })
@@ -26,7 +26,10 @@ export class GoogleRecaptchaModule {
         const configProvider = this.createAsyncOptionsProvider(options)
         return {
             module: GoogleRecaptchaModule,
-            imports: options.imports,
+            imports: [
+                ...options.imports,
+                HttpModule
+            ],
             providers: [
                 configProvider,
                 GoogleRecaptchaGuard,
