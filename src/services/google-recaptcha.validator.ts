@@ -16,7 +16,22 @@ export class GoogleRecaptchaValidator {
     validate(response: string): Promise<boolean> {
         return this.http.post(this.apiUrl, qs.stringify({secret: this.options.secretKey, response}), {headers: this.headers})
             .toPromise()
-            .then(res => res.data.success)
+            .then(res => {
+                if (!res.data.success) {
+                    return false;
+                }
+
+                if (this.options.version
+                    && this.options.minScore
+                    && this.options.version === 3
+                    && res.data.score
+                    && parseFloat(res.data.score) <= this.options.minScore
+                ) {
+                    return false;
+                }
+
+                return true
+            })
             .catch(e => {
                 if (this.options.onError) {
                     return this.options.onError(e);

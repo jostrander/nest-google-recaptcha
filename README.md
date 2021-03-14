@@ -12,6 +12,8 @@ $ npm i nest-google-recaptcha
     imports: [
         GoogleRecaptchaModule.forRoot({
             secretKey: process.env.GOOGLE_RECAPTCHA_SECRET_KEY,
+            version: 3,     // Optional, for V3
+            minScore: 0.5,  // Optional, for V3
             response: req => req.headers.authorization,
             skipIf: req => process.env.NODE_ENV !== 'production',
             onError: e => {
