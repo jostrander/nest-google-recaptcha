@@ -12,6 +12,8 @@ describe('Google recaptcha module', () => {
             imports: [
                 GoogleRecaptchaModule.forRoot({
                     secretKey: process.env.GOOGLE_RECAPTCHA_SECRET_KEY,
+                    version: 3,
+                    minScore: 0.5,
                     response: req => req.headers.authorization,
                     skipIf: req => process.env.NODE_ENV !== 'production',
                     onError: e => {
